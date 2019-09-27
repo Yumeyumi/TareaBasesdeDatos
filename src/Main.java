@@ -5,13 +5,14 @@ public class Main {
 public static void main(String[] args) {
 	
 	Controlador miControlador = new Controlador();
-	
+	String key="0";
+	while (!key.equals("3")) {
 	Scanner sc = new Scanner(System.in);
 		System.out.println("Elige el método de acceso a datos que quieras utilizar ");
-		System.out.println("1 : Ficheros 2: Base de datos");
+		System.out.println("1 : Ficheros 2: Base de datos 3: Salir del menú");
 		System.out.println("Introduce el número de la acción que quieras realizar");
-		int key = sc.nextInt();
-		
+		key = sc.next();
+		if (key.equals("1") || key.equals("2")) {
 		miControlador.eligeAcceso(key);
 		System.out.println("¿Qué deseas hacer?");
 		System.out.println("1 - Leer datos\r\n" + 
@@ -32,6 +33,11 @@ public static void main(String[] args) {
 			break;
 		}
 		
-		
+}else if(key.equals("3")) {
+	System.out.println("Has salido de la aplicación");
+}else {
+	System.out.println("No has escrito correctamente qué quieres hacer, Debes elegir entre los números = 1, 2 o 3 ");
+}
+	}
 }
 }

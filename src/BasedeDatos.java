@@ -30,6 +30,7 @@ public class BasedeDatos implements Interfaz{
 	HashMap<Integer,Usuario> datos = new HashMap<Integer,Usuario>();
 	
 	public BasedeDatos() {
+		
 		try {
 			//Leemos el fichero de configuración y asignamos los valores
 			Properties propiedades = new Properties();
@@ -124,6 +125,10 @@ public class BasedeDatos implements Interfaz{
 
 	@Override
 	public void pasarDatos(HashMap datos) {
+		System.out.println("¿Está seguro de  continuar? Se borraran los datos anteriores de la base de datos");
+		System.out.println("Escriba si o no");
+		String respuesta = sc.nextLine();
+		if (respuesta.toLowerCase().equals("si")) {
 		try {
 		stmt = conexion.createStatement();
 		int result = 0;
@@ -146,6 +151,9 @@ public class BasedeDatos implements Interfaz{
 	} catch (SQLException e1) {
 		// TODO Auto-generated catch block
 		e1.printStackTrace();
+	}
+	}else {
+		System.out.println("No se ha gestionado el intercambio, si desea hacerlo debe escribir = si");
 	}
 	}
 

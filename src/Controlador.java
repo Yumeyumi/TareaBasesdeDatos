@@ -3,13 +3,13 @@ public class Controlador {
 	Interfaz miaccesoDatos;
 	Interfaz miotroAcceso;
 //Cuando leemos, siempre saldrá con el formato de hash map para traspasar los datos a otros métodos
-	public void eligeAcceso (int key) {
+	public void eligeAcceso (String key) {
 	switch (key) {
-	case 1:
+	case "1":
 		miaccesoDatos = new Fichero();
 		miotroAcceso = new BasedeDatos();
 		break;
-	case 2:
+	case "2":
 		miaccesoDatos = new BasedeDatos();
 		miotroAcceso = new Fichero();
 		break;

@@ -114,7 +114,7 @@ public class Fichero implements Interfaz {
 	@Override
 	public void pasarDatos(HashMap datos) {
 		
-		System.out.println("¿Está seguro de desear continuar? Se borraran los datos anteriores del fichero");
+		System.out.println("¿Está seguro de  continuar? Se borraran los datos anteriores del fichero");
 		System.out.println("Escriba si o no");
 		String respuesta = sc.nextLine();
 		if (respuesta.toLowerCase().equals("si")) {
@@ -152,7 +152,9 @@ public class Fichero implements Interfaz {
 					ex.printStackTrace();
 				}
 			}
-		} 
+		} else {
+			System.out.println("No se ha gestionado el intercambio, si desea hacerlo debe escribir = si");
+		}
 		
 	}
 
