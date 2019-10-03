@@ -147,5 +147,69 @@ public class BasedeDatos implements Interfaz{
 	}
 	}
 
+
+	@Override
+	public void modificarDatos(String usr, String pass, int id) {
+		try {
+			stmt = conexion.createStatement();
+			contador++;
+			String queryinsert = "UPDATE usuarios SET User = '" + usr +  "', Pass = '" + pass +  "' WHERE ID = '" + id + "'"; 
+			int result = 0;
+			result = stmt.executeUpdate(queryinsert);
+			System.out.println("Filas insertadas: " + result);
+			stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+
+	@Override
+	public void buscar(HashMap datos, Integer id) {
+		
+		Iterator it = datos.entrySet().iterator();
+		while (it.hasNext()) {
+		Map.Entry e = (Map.Entry)it.next();
+		if ( e.getKey() == id )
+		System.out.println( e.getValue());
+		}
+		
+	}
+
+
+	@Override
+	public void eliminarTodos() {
+		try {
+		stmt = conexion.createStatement();
+		int result = 0;
+		result = stmt.executeUpdate("DELETE FROM usuarios");
+		}catch(SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+
+	@Override
+	public void eliminarUno(int id) {
+		try {
+			stmt = conexion.createStatement();
+			contador++;
+			String queryinsert = "DELETE FROM usuarios WHERE ID = '" + id + "'"; 
+			int result = 0;
+			result = stmt.executeUpdate(queryinsert);
+			System.out.println("Filas insertadas: " + result);
+			stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+
 }
 	

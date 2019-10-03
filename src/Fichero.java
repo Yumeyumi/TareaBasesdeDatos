@@ -142,4 +142,28 @@ public class Fichero implements Interfaz {
 			}
 	}
 
+	@Override
+	public void modificarDatos(String usr, String pass, int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void buscar(HashMap datos, Integer id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void eliminarTodos() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void eliminarUno(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -7,14 +7,23 @@ public class Controlador {
 	switch (key) {
 	case "1":
 		miaccesoDatos = new Fichero();
-		miotroAcceso = new BasedeDatos();
 		break;
 	case "2":
 		miaccesoDatos = new BasedeDatos();
-		miotroAcceso = new Fichero();
 		break;
 	}
 	}
+	public void eligeImport (String key) {
+		switch (key) {
+		case "1":
+			miotroAcceso = new BasedeDatos();
+			break;
+		case "2":
+			miotroAcceso = new Fichero();
+			break;
+		}
+		}
+	
 	public void leerDatos() {
 	miaccesoDatos.escribir(miaccesoDatos.leer());
 	}
@@ -23,9 +32,19 @@ public class Controlador {
 		miaccesoDatos.ingresarDatos(usr,pass);
 	}
 	public void cambioDatos() {
-		
-		
 		miaccesoDatos.pasarDatos(miotroAcceso.leer());
+	}
+	public void mostrarDato(int id) {
+		miaccesoDatos.buscar(miaccesoDatos.leer(), id);
+	}
+	public void modificarDato(String usr, String pass, int id) {
+		miaccesoDatos.modificarDatos(usr, pass, id);;
+	}
+	public void eliminarDato(int id) {
+		miaccesoDatos.eliminarUno(id);
+	}
+	public void eliminarTodo() {
+		miaccesoDatos.eliminarTodos();
 	}
 	
 }
