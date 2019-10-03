@@ -60,6 +60,7 @@ public class BasedeDatos implements Interfaz{
 		} catch (SQLException sqle) {
 			System.out.println(" – Error al conectarse a la base de datos -");
 			sqle.printStackTrace();
+			System.exit(0);
 		} catch (Exception e) {
 			System.out.println(" – Error general -");
 			e.printStackTrace();
@@ -103,14 +104,10 @@ public class BasedeDatos implements Interfaz{
 
 
 	@Override
-	public void ingresarDatos() {
+	public void ingresarDatos(String usr, String pass) {
 		try {
 			stmt = conexion.createStatement();
 			contador++;
-			System.out.println("Inserta nuevo usuario");
-			String usr = sc.nextLine();
-			System.out.println("Inserta nueva contraseña");
-			String pass = sc.nextLine();
 			String queryinsert = "INSERT INTO usuarios (ID,User,Pass) VALUES ('" + contador + "','" + usr + "','" + pass + "')";
 			int result = 0;
 			result = stmt.executeUpdate(queryinsert);
@@ -125,10 +122,6 @@ public class BasedeDatos implements Interfaz{
 
 	@Override
 	public void pasarDatos(HashMap datos) {
-		System.out.println("¿Está seguro de  continuar? Se borraran los datos anteriores de la base de datos");
-		System.out.println("Escriba si o no");
-		String respuesta = sc.nextLine();
-		if (respuesta.toLowerCase().equals("si")) {
 		try {
 		stmt = conexion.createStatement();
 		int result = 0;
@@ -151,9 +144,6 @@ public class BasedeDatos implements Interfaz{
 	} catch (SQLException e1) {
 		// TODO Auto-generated catch block
 		e1.printStackTrace();
-	}
-	}else {
-		System.out.println("No se ha gestionado el intercambio, si desea hacerlo debe escribir = si");
 	}
 	}
 

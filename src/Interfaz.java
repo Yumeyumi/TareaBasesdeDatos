@@ -5,6 +5,6 @@ public interface Interfaz {
 	
 public HashMap<Integer,Usuario> leer();	
 public void escribir(HashMap datos);
-public void ingresarDatos();
+public void ingresarDatos(String usr, String pass);
 public void pasarDatos(HashMap datos);
 }

@@ -59,8 +59,6 @@ public class Fichero implements Interfaz {
 				System.out.println(e.getMessage());
 			}
 		}
-		System.out.println(datos.size());
-		
 		return datos;
 	}
 
@@ -74,17 +72,13 @@ public class Fichero implements Interfaz {
 	}
 	
 	@Override
-	public void ingresarDatos() {
+	public void ingresarDatos(String urs, String pass) {
 		BufferedWriter bw = null;
 		FileWriter fw = null;
 		Scanner sc = new Scanner(System.in);
 		try {
 			contador++;
-			System.out.println("Introduce tu usuario");
-			String usrF = sc.next();
-			System.out.println("Introduce tu contraseña");
-			String passF = sc.next();
-			String data = "\n"+contador+ "," + usrF + "," + passF;
+			String data = "\n"+contador+ "," + urs + "," + pass;
 			File file = new File("Fichero.txt");
 			// Si el archivo no existe, se crea!
 			if (!file.exists()) {
@@ -94,7 +88,6 @@ public class Fichero implements Interfaz {
 			fw = new FileWriter(file.getAbsoluteFile(), true);
 			bw = new BufferedWriter(fw);
 			bw.write(data);
-			System.out.println("información agregada!");
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
@@ -113,11 +106,6 @@ public class Fichero implements Interfaz {
 
 	@Override
 	public void pasarDatos(HashMap datos) {
-		
-		System.out.println("¿Está seguro de  continuar? Se borraran los datos anteriores del fichero");
-		System.out.println("Escriba si o no");
-		String respuesta = sc.nextLine();
-		if (respuesta.toLowerCase().equals("si")) {
 			String data = "";
 			BufferedWriter bw = null;
 			FileWriter fw = null;
@@ -152,10 +140,6 @@ public class Fichero implements Interfaz {
 					ex.printStackTrace();
 				}
 			}
-		} else {
-			System.out.println("No se ha gestionado el intercambio, si desea hacerlo debe escribir = si");
-		}
-		
 	}
 
 }

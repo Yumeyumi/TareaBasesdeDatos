@@ -26,10 +26,22 @@ public static void main(String[] args) {
 			miControlador.leerDatos();
 			break;
 		case 2:
-			miControlador.ingresarDatos();
+			System.out.println("Inserta nuevo usuario");
+			String usr = sc.nextLine();
+			System.out.println("Inserta nueva contraseña");
+			String pass = sc.nextLine();
+			miControlador.ingresarDatos(usr, pass);
 			break;
 		case 3:
+			System.out.println("¿Está seguro de  continuar? Se borraran los datos anteriores de la base de datos");
+			System.out.println("Escriba si o no");
+			String respuesta = sc.nextLine();
+			if (respuesta.toLowerCase().equals("si")) {
 			miControlador.cambioDatos();
+			System.out.println("¡Información agregada!");
+			}else {
+				System.out.println("No se ha gestionado el intercambio, si desea hacerlo debe escribir = si");
+			}
 			break;
 		}
 		

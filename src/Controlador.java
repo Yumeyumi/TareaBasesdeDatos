@@ -18,11 +18,13 @@ public class Controlador {
 	public void leerDatos() {
 	miaccesoDatos.escribir(miaccesoDatos.leer());
 	}
-	public void ingresarDatos() {
+	public void ingresarDatos(String usr, String pass) {
 		miaccesoDatos.leer();
-		miaccesoDatos.ingresarDatos();
+		miaccesoDatos.ingresarDatos(usr,pass);
 	}
 	public void cambioDatos() {
+		
+		
 		miaccesoDatos.pasarDatos(miotroAcceso.leer());
 	}
 	
