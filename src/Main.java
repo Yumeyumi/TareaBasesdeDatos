@@ -27,14 +27,14 @@ public class Main {
 					break;
 				case 2:
 					System.out.println("Inserta nuevo usuario");
-					String usr = sc.nextLine();
+					String usr = sc.next();
 					System.out.println("Inserta nueva contraseña");
-					String pass = sc.nextLine();
+					String pass = sc.next();
 					miControlador.ingresarDatos(usr, pass);
 					break;
 				case 3:
 					System.out.println("Elige el tipo de acceso para la importación");
-					System.out.println("1 : Ficheros 2: Base de datos");
+					System.out.println("1 : Base de datos 2: Ficheros");
 					System.out.println("Introduce el número de la acción que quieras realizar");
 					String keytres = sc.next();
 					if (keytres.equals("1") || keytres.equals("2")) {
@@ -77,8 +77,8 @@ public class Main {
 				case 7:
 					miControlador.eliminarTodo();
 					break;
-				}
 
+				}
 			} else if (key.equals("3")) {
 				System.out.println("Has salido de la aplicación");
 			} else {

@@ -26,7 +26,6 @@ public class BasedeDatos implements Interfaz{
 	private String driver;
 	private String query = "SELECT * FROM usuarios";
 	Scanner sc = new Scanner(System.in);
-	static int contador=0;
 	HashMap<Integer,Usuario> datos = new HashMap<Integer,Usuario>();
 	
 	public BasedeDatos() {
@@ -80,7 +79,6 @@ public class BasedeDatos implements Interfaz{
 				us.setPass(rset.getString("Pass"));
 				us.setUser(rset.getString("User"));
 				datos.put(rset.getInt("ID"), us);
-				contador++;
 			}
 			rset.close();
 			stmt.close();
@@ -91,24 +89,12 @@ public class BasedeDatos implements Interfaz{
 		return datos;
 	}
 	
-
 	@Override
-	public void escribir(HashMap datos) {
-		
-		Iterator it = datos.entrySet().iterator();
-		while (it.hasNext()) {
-		Map.Entry e = (Map.Entry)it.next();
-		System.out.println( e.getValue());
-		}
-	}
-
-
-	@Override
-	public void ingresarDatos(String usr, String pass) {
+	public void ingresarDatos(String usr, String pass, int id) {
+		id++;
 		try {
 			stmt = conexion.createStatement();
-			contador++;
-			String queryinsert = "INSERT INTO usuarios (ID,User,Pass) VALUES ('" + contador + "','" + usr + "','" + pass + "')";
+			String queryinsert = "INSERT INTO usuarios (ID,User,Pass) VALUES ('" + id + "','" + usr + "','" + pass + "')";
 			int result = 0;
 			result = stmt.executeUpdate(queryinsert);
 			System.out.println("Filas insertadas: " + result);
@@ -117,9 +103,8 @@ public class BasedeDatos implements Interfaz{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
-
+	
 	@Override
 	public void pasarDatos(HashMap datos) {
 		try {
@@ -149,10 +134,9 @@ public class BasedeDatos implements Interfaz{
 
 
 	@Override
-	public void modificarDatos(String usr, String pass, int id) {
+	public void modificarDatos(HashMap datos, int id,String usr, String pass) {
 		try {
 			stmt = conexion.createStatement();
-			contador++;
 			String queryinsert = "UPDATE usuarios SET User = '" + usr +  "', Pass = '" + pass +  "' WHERE ID = '" + id + "'"; 
 			int result = 0;
 			result = stmt.executeUpdate(queryinsert);
@@ -164,20 +148,6 @@ public class BasedeDatos implements Interfaz{
 		}
 		
 	}
-
-
-	@Override
-	public void buscar(HashMap datos, Integer id) {
-		
-		Iterator it = datos.entrySet().iterator();
-		while (it.hasNext()) {
-		Map.Entry e = (Map.Entry)it.next();
-		if ( e.getKey() == id )
-		System.out.println( e.getValue());
-		}
-		
-	}
-
 
 	@Override
 	public void eliminarTodos() {
@@ -192,12 +162,10 @@ public class BasedeDatos implements Interfaz{
 		
 	}
 
-
 	@Override
-	public void eliminarUno(int id) {
+	public void eliminarUno(HashMap datos,int id) {
 		try {
 			stmt = conexion.createStatement();
-			contador++;
 			String queryinsert = "DELETE FROM usuarios WHERE ID = '" + id + "'"; 
 			int result = 0;
 			result = stmt.executeUpdate(queryinsert);

@@ -11,10 +11,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Fichero implements Interfaz {
 	HashMap<Integer,Usuario> datos = new HashMap<Integer,Usuario>();
-	static int contador=0;
 	Scanner sc = new Scanner(System.in);
 	
 
@@ -39,11 +39,8 @@ public class Fichero implements Interfaz {
 				us.setPass(partes[2]);
 				datos.put(Integer.parseInt(partes[0]), us);
 				texto = br.readLine();
-				contador++;
 			}
-			
 
-			
 		} catch (FileNotFoundException e) {
 			System.out.println("Error: Fichero no encontrado");
 			System.out.println(e.getMessage());
@@ -63,22 +60,12 @@ public class Fichero implements Interfaz {
 	}
 
 	@Override
-	public void escribir(HashMap datos) {
-		Iterator it = datos.entrySet().iterator();
-		while (it.hasNext()) {
-		Map.Entry e = (Map.Entry)it.next();
-		System.out.println( e.getValue());
-		}
-	}
-	
-	@Override
-	public void ingresarDatos(String urs, String pass) {
+	public void ingresarDatos(String urs, String pass, int id) {
 		BufferedWriter bw = null;
 		FileWriter fw = null;
-		Scanner sc = new Scanner(System.in);
+		id++;
 		try {
-			contador++;
-			String data = "\n"+contador+ "," + urs + "," + pass;
+			String data = "\n"+id+ "," + urs + "," + pass;
 			File file = new File("Fichero.txt");
 			// Si el archivo no existe, se crea!
 			if (!file.exists()) {
@@ -143,27 +130,45 @@ public class Fichero implements Interfaz {
 	}
 
 	@Override
-	public void modificarDatos(String usr, String pass, int id) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void buscar(HashMap datos, Integer id) {
-		// TODO Auto-generated method stub
+	public void modificarDatos(HashMap datos, int id, String usr, String pass) {
+		Iterator it = datos.entrySet().iterator();
+		while (it.hasNext()) {
+		Map.Entry e = (Map.Entry)it.next();
+		if ((int)e.getKey() == id) {
+			Usuario us = new Usuario();
+			us.setId(""+id);
+			us.setUser(usr);
+			us.setPass(pass);
+			e.setValue(us);
+		}
+		}
+		pasarDatos(datos);
 		
 	}
 
 	@Override
 	public void eliminarTodos() {
-		// TODO Auto-generated method stub
-		
+		try {
+			BufferedWriter bw = new BufferedWriter(new FileWriter("Fichero.txt"));
+			bw.write("");
+			bw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
-	public void eliminarUno(int id) {
-		// TODO Auto-generated method stub
-		
+	public void eliminarUno(HashMap datos, int id) {
+		Set entrySet = datos.entrySet();
+		Iterator iterator = entrySet.iterator();
+		while (iterator.hasNext()){
+		    Map.Entry e = (Map.Entry) iterator.next();
+		    if((int)e.getKey()==id){
+		        iterator.remove();
+		    }
+		}
+		pasarDatos(datos);	
 	}
 
 }

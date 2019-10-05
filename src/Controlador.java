@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class Controlador {
 	Interfaz miaccesoDatos;
@@ -25,26 +28,57 @@ public class Controlador {
 		}
 	
 	public void leerDatos() {
-	miaccesoDatos.escribir(miaccesoDatos.leer());
+		escribir(miaccesoDatos.leer());
 	}
 	public void ingresarDatos(String usr, String pass) {
-		miaccesoDatos.leer();
-		miaccesoDatos.ingresarDatos(usr,pass);
+		miaccesoDatos.ingresarDatos(usr,pass,ultimaId(miaccesoDatos.leer()));
 	}
 	public void cambioDatos() {
 		miaccesoDatos.pasarDatos(miotroAcceso.leer());
 	}
 	public void mostrarDato(int id) {
-		miaccesoDatos.buscar(miaccesoDatos.leer(), id);
+		buscar(miaccesoDatos.leer(), id);
 	}
 	public void modificarDato(String usr, String pass, int id) {
-		miaccesoDatos.modificarDatos(usr, pass, id);;
+		miaccesoDatos.modificarDatos(miaccesoDatos.leer(),id , usr, pass );;
 	}
 	public void eliminarDato(int id) {
-		miaccesoDatos.eliminarUno(id);
+		miaccesoDatos.eliminarUno(miaccesoDatos.leer(),id);
 	}
 	public void eliminarTodo() {
 		miaccesoDatos.eliminarTodos();
 	}
+	
+	
+	
+	public int ultimaId(HashMap datos) {
+		int ultimoValor = 0;
+		Iterator it = datos.entrySet().iterator();
+		while (it.hasNext()) {
+		Map.Entry e = (Map.Entry)it.next();
+		ultimoValor = (int) e.getKey();
+		}
+		System.out.println("Aquí está el id" + ultimoValor);
+		return ultimoValor;
+	}
+	
+	public void buscar(HashMap datos, Integer id) {
+		Iterator it = datos.entrySet().iterator();
+		while (it.hasNext()) {
+		Map.Entry e = (Map.Entry)it.next();
+		if ( e.getKey() == id )
+		System.out.println( e.getValue());
+		}
+	}
+
+	public void escribir(HashMap datos) {
+		Iterator it = datos.entrySet().iterator();
+		while (it.hasNext()) {
+		Map.Entry e = (Map.Entry)it.next();
+		System.out.println( e.getValue());
+		}
+	}
+	
+		
 	
 }
