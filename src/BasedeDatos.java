@@ -114,9 +114,8 @@ public class BasedeDatos implements Interfaz{
 		Iterator it = datos.entrySet().iterator();
 		while (it.hasNext()) {
 		Map.Entry e = (Map.Entry)it.next();
-		String dato = e.getValue().toString();
-		String[] partes =  dato.split(",");
-		String queryinsert = "INSERT INTO usuarios (ID,User,Pass) VALUES ('" + partes[0] + "','" + partes[1] + "','" + partes[2] + "')";
+		Usuario dato = (Usuario)e.getValue();	
+		String queryinsert = "INSERT INTO usuarios (ID,User,Pass) VALUES ('" + dato.getId() + "','" + dato.getUser() + "','" + dato.getPass() + "')";
 		result = stmt.executeUpdate(queryinsert);
 		System.out.println("Filas insertadas: " + result);
 	}} catch (SQLException e1) {

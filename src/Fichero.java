@@ -100,9 +100,9 @@ public class Fichero implements Interfaz {
 				Iterator it = datos.entrySet().iterator();
 				while (it.hasNext()) {
 				Map.Entry e = (Map.Entry)it.next();
-				String dato = e.getValue().toString();
-				String[] partes =  dato.split(",");
-				data += partes[0]+","+ partes[1]+","+ partes[2]+"\n";
+				Usuario dato = (Usuario)e.getValue();;
+				
+				data += dato.getId()+","+ dato.getUser()+","+ dato.getPass()+"\n";
 				}
 				File file = new File("Fichero.txt");
 				// Si el archivo no existe, se crea!
