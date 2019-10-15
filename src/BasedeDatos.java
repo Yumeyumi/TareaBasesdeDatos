@@ -16,6 +16,8 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Scanner;
 
+import modelo.Usuario;
+
 public class BasedeDatos implements Interfaz{
 	
 	Connection conexion;
@@ -25,7 +27,6 @@ public class BasedeDatos implements Interfaz{
 	private String pwd;
 	private String driver;
 	private String query = "SELECT * FROM usuarios";
-	Scanner sc = new Scanner(System.in);
 	HashMap<Integer,Usuario> datos = new HashMap<Integer,Usuario>();
 	
 	public BasedeDatos() {
@@ -75,7 +76,7 @@ public class BasedeDatos implements Interfaz{
 			
 			while (rset.next()) {
 				Usuario us = new Usuario();
-				us.setId(rset.getString("ID"));
+				us.setId(rset.getInt("ID"));
 				us.setPass(rset.getString("Pass"));
 				us.setUser(rset.getString("User"));
 				datos.put(rset.getInt("ID"), us);
@@ -157,8 +158,7 @@ public class BasedeDatos implements Interfaz{
 		}catch(SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
+		}	
 	}
 
 	@Override

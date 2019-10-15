@@ -13,6 +13,8 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
+import modelo.Usuario;
+
 public class Fichero implements Interfaz {
 	HashMap<Integer,Usuario> datos = new HashMap<Integer,Usuario>();
 	Scanner sc = new Scanner(System.in);
@@ -34,7 +36,7 @@ public class Fichero implements Interfaz {
 			while (texto != null) {
 				Usuario us = new Usuario();
 				String[] partes = texto.split(",");
-				us.setId(partes[0]);
+				us.setId(Integer.parseInt(partes[0]));
 				us.setUser(partes[1]);
 				us.setPass(partes[2]);
 				datos.put(Integer.parseInt(partes[0]), us);
@@ -136,7 +138,7 @@ public class Fichero implements Interfaz {
 		Map.Entry e = (Map.Entry)it.next();
 		if ((int)e.getKey() == id) {
 			Usuario us = new Usuario();
-			us.setId(""+id);
+			us.setId(id);
 			us.setUser(usr);
 			us.setPass(pass);
 			e.setValue(us);

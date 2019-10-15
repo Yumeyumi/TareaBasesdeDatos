@@ -6,13 +6,13 @@ public class Main {
 		Controlador miControlador = new Controlador();
 		String key = "0";
 		int id;
-		while (!key.equals("3")) {
+		while (!key.equals("4")) {
 			Scanner sc = new Scanner(System.in);
 			System.out.println("Elige el método de acceso a datos que quieras utilizar ");
-			System.out.println("1 : Ficheros 2: Base de datos 3: Salir del menú");
+			System.out.println("1 : Ficheros 2: Base de datos 3: Hibernate 4: Salir del menú");
 			System.out.println("Introduce el número de la acción que quieras realizar");
 			key = sc.next();
-			if (key.equals("1") || key.equals("2")) {
+			if (key.equals("1") || key.equals("2") || key.equals("3")) {
 				miControlador.eligeAcceso(key);
 				System.out.println("¿Qué deseas hacer?");
 				System.out.println("1 - Leer datos\r\n" + "2 - Ingresar datos\r\n"
@@ -34,11 +34,18 @@ public class Main {
 					break;
 				case 3:
 					System.out.println("Elige el tipo de acceso para la importación");
-					System.out.println("1 : Base de datos 2: Ficheros");
+					if (key.equals("1")) {
+						System.out.println("1 : Ficheros 2: Hibernate");
+					} else if (key.equals("2")) {
+						System.out.println("1 : Base de datos 2: Hibernate");
+					} else if (key.equals("3")) {
+						System.out.println("1 : Base de datos 2: Ficheros");
+					}
+
 					System.out.println("Introduce el número de la acción que quieras realizar");
 					String keytres = sc.next();
 					if (keytres.equals("1") || keytres.equals("2")) {
-						miControlador.eligeImport(keytres);
+						miControlador.eligeImport(keytres, key);
 						System.out.println(
 								"¿Está seguro de  continuar? Se borraran los datos anteriores de la base de datos");
 						System.out.println("Escriba si o no");

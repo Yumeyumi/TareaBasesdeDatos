@@ -14,18 +14,46 @@ public class Controlador {
 	case "2":
 		miaccesoDatos = new BasedeDatos();
 		break;
+	case "3":
+		miaccesoDatos = new Hibernate();
+		break;
 	}
 	}
-	public void eligeImport (String key) {
-		switch (key) {
-		case "1":
-			miotroAcceso = new BasedeDatos();
-			break;
-		case "2":
-			miotroAcceso = new Fichero();
-			break;
+	
+	public void eligeImport (String key, String keyAccess) {
+		
+		if (keyAccess.equals("1")) {
+			switch (key) {
+			case "1":
+				miotroAcceso = new Fichero();
+				break;
+			case "2":
+				miotroAcceso = new Hibernate();
+				break;
+			}
+			
+		}else if (keyAccess.equals("2")) {
+			switch (key) {
+			case "1":
+				miotroAcceso = new BasedeDatos();
+				break;
+			case "2":
+				miotroAcceso = new Hibernate();
+				break;
+			}
+			
+		}else if (keyAccess.equals("3")) {
+			
+			switch (key) {
+			case "1":
+				miotroAcceso = new BasedeDatos();
+				break;
+			case "2":
+				miotroAcceso = new Fichero();
+				break;
+			}
 		}
-		}
+	}
 	
 	public void leerDatos() {
 		escribir(miaccesoDatos.leer());

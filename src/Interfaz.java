@@ -1,5 +1,7 @@
 import java.util.HashMap;
 
+import modelo.Usuario;
+
 public interface Interfaz {
 //leer archivos
 	
