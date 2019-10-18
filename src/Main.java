@@ -1,6 +1,19 @@
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Scanner;
 
+
 public class Main {
+	
+	public static void escribir(HashMap datos) {
+		Iterator it = datos.entrySet().iterator();
+		while (it.hasNext()) {
+		Map.Entry e = (Map.Entry)it.next();
+		System.out.println( e.getValue());
+		}
+	}
+	
 	public static void main(String[] args) {
 
 		Controlador miControlador = new Controlador();
@@ -14,6 +27,7 @@ public class Main {
 			key = sc.next();
 			if (key.equals("1") || key.equals("2") || key.equals("3")) {
 				miControlador.eligeAcceso(key);
+				
 				System.out.println("¿Qué deseas hacer?");
 				System.out.println("1 - Leer datos\r\n" + "2 - Ingresar datos\r\n"
 						+ "3 - Pasar datos de una base a otra\r\n" + "4 - Mostrar un dato \r\n"
@@ -23,7 +37,7 @@ public class Main {
 				int keydos = sc.nextInt();
 				switch (keydos) {
 				case 1:
-					miControlador.leerDatos();
+					escribir(miControlador.leerDatos());
 					break;
 				case 2:
 					System.out.println("Inserta nuevo usuario");
@@ -64,7 +78,7 @@ public class Main {
 				case 4:
 					System.out.println("¿Cual es el id del dato que quieres mostrar?");
 					id = sc.nextInt();
-					miControlador.mostrarDato(id);
+					System.out.print(miControlador.mostrarDato(id).toString());
 					break;
 				case 5:
 					System.out.println("Elige el id del dato que quieres modificar");
@@ -86,7 +100,9 @@ public class Main {
 					break;
 
 				}
-			} else if (key.equals("3")) {
+				
+				
+			} else if (key.equals("4")) {
 				System.out.println("Has salido de la aplicación");
 			} else {
 				System.out.println(

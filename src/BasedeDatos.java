@@ -56,14 +56,13 @@ public class BasedeDatos implements Interfaz{
 
 		} catch (ClassNotFoundException cnfe) {
 			System.out.println(" – Driver JDBC no encontrado -");
-			cnfe.printStackTrace();
+			System.exit(0);
 		} catch (SQLException sqle) {
 			System.out.println(" – Error al conectarse a la base de datos -");
-			sqle.printStackTrace();
 			System.exit(0);
 		} catch (Exception e) {
 			System.out.println(" – Error general -");
-			e.printStackTrace();
+			System.exit(0);
 		}
 	}
 
@@ -98,7 +97,6 @@ public class BasedeDatos implements Interfaz{
 			String queryinsert = "INSERT INTO usuarios (ID,User,Pass) VALUES ('" + id + "','" + usr + "','" + pass + "')";
 			int result = 0;
 			result = stmt.executeUpdate(queryinsert);
-			System.out.println("Filas insertadas: " + result);
 			stmt.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -118,7 +116,6 @@ public class BasedeDatos implements Interfaz{
 		Usuario dato = (Usuario)e.getValue();	
 		String queryinsert = "INSERT INTO usuarios (ID,User,Pass) VALUES ('" + dato.getId() + "','" + dato.getUser() + "','" + dato.getPass() + "')";
 		result = stmt.executeUpdate(queryinsert);
-		System.out.println("Filas insertadas: " + result);
 	}} catch (SQLException e1) {
 		// TODO Auto-generated catch block
 		e1.printStackTrace();
@@ -140,7 +137,6 @@ public class BasedeDatos implements Interfaz{
 			String queryinsert = "UPDATE usuarios SET User = '" + usr +  "', Pass = '" + pass +  "' WHERE ID = '" + id + "'"; 
 			int result = 0;
 			result = stmt.executeUpdate(queryinsert);
-			System.out.println("Filas insertadas: " + result);
 			stmt.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -168,7 +164,6 @@ public class BasedeDatos implements Interfaz{
 			String queryinsert = "DELETE FROM usuarios WHERE ID = '" + id + "'"; 
 			int result = 0;
 			result = stmt.executeUpdate(queryinsert);
-			System.out.println("Filas insertadas: " + result);
 			stmt.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

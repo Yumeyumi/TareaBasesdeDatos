@@ -2,6 +2,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import modelo.Usuario;
+
 public class Controlador {
 	Interfaz miaccesoDatos;
 	Interfaz miotroAcceso;
@@ -55,8 +57,8 @@ public class Controlador {
 		}
 	}
 	
-	public void leerDatos() {
-		escribir(miaccesoDatos.leer());
+	public HashMap leerDatos() {
+		return miaccesoDatos.leer();
 	}
 	public void ingresarDatos(String usr, String pass) {
 		miaccesoDatos.ingresarDatos(usr,pass,ultimaId(miaccesoDatos.leer()));
@@ -64,8 +66,8 @@ public class Controlador {
 	public void cambioDatos() {
 		miaccesoDatos.pasarDatos(miotroAcceso.leer());
 	}
-	public void mostrarDato(int id) {
-		buscar(miaccesoDatos.leer(), id);
+	public Usuario mostrarDato(int id) {	
+	return	buscar(miaccesoDatos.leer(), id);
 	}
 	public void modificarDato(String usr, String pass, int id) {
 		miaccesoDatos.modificarDatos(miaccesoDatos.leer(),id , usr, pass );;
@@ -90,23 +92,11 @@ public class Controlador {
 		return ultimoValor;
 	}
 	
-	public void buscar(HashMap datos, Integer id) {
+	public Usuario buscar(HashMap datos, Integer id) {
 		Iterator it = datos.entrySet().iterator();
-		while (it.hasNext()) {
-		Map.Entry e = (Map.Entry)it.next();
-		if ( e.getKey() == id )
-		System.out.println( e.getValue());
-		}
+		Usuario us = new Usuario();
+		us = (Usuario) datos.get(id);
+		return us;
 	}
-
-	public void escribir(HashMap datos) {
-		Iterator it = datos.entrySet().iterator();
-		while (it.hasNext()) {
-		Map.Entry e = (Map.Entry)it.next();
-		System.out.println( e.getValue());
-		}
-	}
-	
-		
 	
 }

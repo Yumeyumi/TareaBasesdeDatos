@@ -17,6 +17,7 @@ public class Hibernate implements Interfaz {
 		
 		HibernateUtil util = new HibernateUtil(); 
 		session = util.getSessionFactory().openSession();	
+		
 	}
 	
 	@Override
@@ -33,6 +34,7 @@ public class Hibernate implements Interfaz {
         	datos.put(id, us);     
         }	
 		return datos;
+		
 	}
 
 	@Override

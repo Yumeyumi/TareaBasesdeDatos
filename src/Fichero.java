@@ -115,7 +115,7 @@ public class Fichero implements Interfaz {
 				fw = new FileWriter(file.getAbsoluteFile());
 				bw = new BufferedWriter(fw);
 				bw.write(data);
-				System.out.println("información agregada!");
+				
 			} catch (IOException e) {
 				e.printStackTrace();
 			} finally {
