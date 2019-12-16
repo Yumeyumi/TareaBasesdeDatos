@@ -19,13 +19,13 @@ public class Main {
 		Controlador miControlador = new Controlador();
 		String key = "0";
 		int id;
-		while (!key.equals("4")) {
+		while (!key.equals("5")) {
 			Scanner sc = new Scanner(System.in);
 			System.out.println("Elige el método de acceso a datos que quieras utilizar ");
-			System.out.println("1 : Ficheros 2: Base de datos 3: Hibernate 4: Salir del menú");
+			System.out.println("1 : Ficheros 2: Base de datos 3: Hibernate 4: Mongo 5:Salir del menú");
 			System.out.println("Introduce el número de la acción que quieras realizar");
 			key = sc.next();
-			if (key.equals("1") || key.equals("2") || key.equals("3")) {
+			if (key.equals("1") || key.equals("2") || key.equals("3") || key.equals("4")) {
 				miControlador.eligeAcceso(key);
 				
 				System.out.println("¿Qué deseas hacer?");
@@ -48,17 +48,20 @@ public class Main {
 					break;
 				case 3:
 					System.out.println("Elige el tipo de acceso para la importación");
+					
 					if (key.equals("1")) {
-						System.out.println("1 : Ficheros 2: Hibernate");
+						System.out.println("1 : Ficheros 2: Hibernate 3: Mongo");
 					} else if (key.equals("2")) {
-						System.out.println("1 : Base de datos 2: Hibernate");
+						System.out.println("1 : Base de datos 2: Hibernate 3: Mongo");
 					} else if (key.equals("3")) {
-						System.out.println("1 : Base de datos 2: Ficheros");
+						System.out.println("1 : Base de datos 2: Ficheros 3: Mongo");
+					}else if (key.equals("4")) {
+						System.out.println("1 : Base de datos 2: Ficheros 3: Hibernate");
 					}
 
 					System.out.println("Introduce el número de la acción que quieras realizar");
 					String keytres = sc.next();
-					if (keytres.equals("1") || keytres.equals("2")) {
+					if (keytres.equals("1") || keytres.equals("2") || keytres.equals("3")) {
 						miControlador.eligeImport(keytres, key);
 						System.out.println(
 								"¿Está seguro de  continuar? Se borraran los datos anteriores de la base de datos");
@@ -78,7 +81,7 @@ public class Main {
 				case 4:
 					System.out.println("¿Cual es el id del dato que quieres mostrar?");
 					id = sc.nextInt();
-					System.out.print(miControlador.mostrarDato(id).toString());
+					System.out.println(miControlador.mostrarDato(id).toString());
 					break;
 				case 5:
 					System.out.println("Elige el id del dato que quieres modificar");
@@ -102,7 +105,7 @@ public class Main {
 				}
 				
 				
-			} else if (key.equals("4")) {
+			} else if (key.equals("5")) {
 				System.out.println("Has salido de la aplicación");
 			} else {
 				System.out.println(
