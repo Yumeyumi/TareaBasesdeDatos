@@ -22,10 +22,10 @@ public class Main {
 		while (!key.equals("5")) {
 			Scanner sc = new Scanner(System.in);
 			System.out.println("Elige el método de acceso a datos que quieras utilizar ");
-			System.out.println("1 : Ficheros 2: Base de datos 3: Hibernate 4: Mongo 5:Salir del menú");
+			System.out.println("1 : Ficheros 2: Base de datos 3: Hibernate 4: Mongo 5: Cliente/Servidor 6:Salir del menú");
 			System.out.println("Introduce el número de la acción que quieras realizar");
 			key = sc.next();
-			if (key.equals("1") || key.equals("2") || key.equals("3") || key.equals("4")) {
+			if (key.equals("1") || key.equals("2") || key.equals("3") || key.equals("4")|| key.equals("5")) {
 				miControlador.eligeAcceso(key);
 				
 				System.out.println("¿Qué deseas hacer?");
@@ -50,18 +50,20 @@ public class Main {
 					System.out.println("Elige el tipo de acceso para la importación");
 					
 					if (key.equals("1")) {
-						System.out.println("1 : Ficheros 2: Hibernate 3: Mongo");
+						System.out.println("1 : Ficheros 2: Hibernate 3: Mongo 4: Cliente/Servidor");
 					} else if (key.equals("2")) {
-						System.out.println("1 : Base de datos 2: Hibernate 3: Mongo");
+						System.out.println("1 : Base de datos 2: Hibernate 3: Mongo 4: Cliente/Servidor");
 					} else if (key.equals("3")) {
-						System.out.println("1 : Base de datos 2: Ficheros 3: Mongo");
+						System.out.println("1 : Base de datos 2: Ficheros 3: Mongo 4: Cliente/Servidor");
 					}else if (key.equals("4")) {
-						System.out.println("1 : Base de datos 2: Ficheros 3: Hibernate");
+						System.out.println("1 : Base de datos 2: Ficheros 3: Hibernate 4: Cliente/Servidor");
+					}else if (key.equals("5")) {
+						System.out.println("1 : Base de datos 2: Ficheros 3: Hibernate 4: Mongo");
 					}
 
 					System.out.println("Introduce el número de la acción que quieras realizar");
 					String keytres = sc.next();
-					if (keytres.equals("1") || keytres.equals("2") || keytres.equals("3")) {
+					if (keytres.equals("1") || keytres.equals("2") || keytres.equals("3")|| keytres.equals("4")) {
 						miControlador.eligeImport(keytres, key);
 						System.out.println(
 								"¿Está seguro de  continuar? Se borraran los datos anteriores de la base de datos");
@@ -97,15 +99,17 @@ public class Main {
 					System.out.println("Elige el id del dato que quieres eliminar");
 					id = sc.nextInt();
 					miControlador.eliminarDato(id);
+					System.out.println("Se ha eliminado correctamente");
 					break;
 				case 7:
 					miControlador.eliminarTodo();
+					System.out.println("Has eliminado toda la base de datos");
 					break;
 
 				}
 				
 				
-			} else if (key.equals("5")) {
+			} else if (key.equals("6")) {
 				System.out.println("Has salido de la aplicación");
 			} else {
 				System.out.println(

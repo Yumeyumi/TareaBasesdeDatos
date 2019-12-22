@@ -22,6 +22,9 @@ public class Controlador {
 	case "4":
 		miaccesoDatos = new Mongo();
 		break;
+	case "5":
+		miaccesoDatos = new ClienteServidor();
+		break;
 	}
 	}
 	
@@ -38,6 +41,9 @@ public class Controlador {
 			case "3":
 				miotroAcceso = new Mongo();
 				break;
+			case "4":
+				miotroAcceso = new ClienteServidor();
+				break;
 			}
 			
 		}else if (keyAccess.equals("2")) {
@@ -50,6 +56,9 @@ public class Controlador {
 				break;
 			case "3":
 				miotroAcceso = new Mongo();
+				break;
+			case "4":
+				miotroAcceso = new ClienteServidor();
 				break;
 			}
 			
@@ -65,6 +74,9 @@ public class Controlador {
 			case "3":
 				miotroAcceso = new Mongo();
 				break;
+			case "4":
+				miotroAcceso = new ClienteServidor();
+				break;
 			}
 		}else if (keyAccess.equals("4")) {
 			
@@ -77,6 +89,24 @@ public class Controlador {
 				break;
 			case "3":
 				miotroAcceso = new Hibernate();
+			case "4":
+				miotroAcceso = new ClienteServidor();
+				break;
+			}		
+		}else if (keyAccess.equals("5")) {
+			
+			switch (key) {
+			case "1":
+				miotroAcceso = new BasedeDatos();
+				break;
+			case "2":
+				miotroAcceso = new Fichero();
+				break;
+			case "3":
+				miotroAcceso = new Hibernate();
+			case "4":
+				miotroAcceso = new Mongo();
+				break;
 			}
 		}
 	}
