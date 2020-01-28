@@ -22,10 +22,10 @@ public class Main {
 		while (!key.equals("5")) {
 			Scanner sc = new Scanner(System.in);
 			System.out.println("Elige el método de acceso a datos que quieras utilizar ");
-			System.out.println("1 : Ficheros 2: Base de datos 3: Hibernate 4: Mongo 5: Cliente/Servidor 6:Salir del menú");
+			System.out.println("1 : Ficheros 2: Base de datos 3: Hibernate 4: Mongo 5: Cliente/Servidor 6:Node 7:Salir del menú");
 			System.out.println("Introduce el número de la acción que quieras realizar");
 			key = sc.next();
-			if (key.equals("1") || key.equals("2") || key.equals("3") || key.equals("4")|| key.equals("5")) {
+			if (key.equals("1") || key.equals("2") || key.equals("3") || key.equals("4")|| key.equals("5")|| key.equals("6")) {
 				miControlador.eligeAcceso(key);
 				
 				System.out.println("¿Qué deseas hacer?");
@@ -50,15 +50,17 @@ public class Main {
 					System.out.println("Elige el tipo de acceso para la importación");
 					
 					if (key.equals("1")) {
-						System.out.println("1 : Ficheros 2: Hibernate 3: Mongo 4: Cliente/Servidor");
+						System.out.println("1 : Ficheros 2: Hibernate 3: Mongo 4: Cliente/Servidor 5: Node");
 					} else if (key.equals("2")) {
-						System.out.println("1 : Base de datos 2: Hibernate 3: Mongo 4: Cliente/Servidor");
+						System.out.println("1 : Base de datos 2: Hibernate 3: Mongo 4: Cliente/Servidor 5: Node");
 					} else if (key.equals("3")) {
-						System.out.println("1 : Base de datos 2: Ficheros 3: Mongo 4: Cliente/Servidor");
+						System.out.println("1 : Base de datos 2: Ficheros 3: Mongo 4: Cliente/Servidor 5: Node");
 					}else if (key.equals("4")) {
-						System.out.println("1 : Base de datos 2: Ficheros 3: Hibernate 4: Cliente/Servidor");
+						System.out.println("1 : Base de datos 2: Ficheros 3: Hibernate 4: Cliente/Servidor 5: Node");
 					}else if (key.equals("5")) {
-						System.out.println("1 : Base de datos 2: Ficheros 3: Hibernate 4: Mongo");
+						System.out.println("1 : Base de datos 2: Ficheros 3: Hibernate 4: Mongo 5: Node");
+					}else if (key.equals("6")) {
+						System.out.println("1 : Base de datos 2: Ficheros 3: Hibernate 4: Mongo 5:Cliente/Servidor");
 					}
 
 					System.out.println("Introduce el número de la acción que quieras realizar");
@@ -109,7 +111,7 @@ public class Main {
 				}
 				
 				
-			} else if (key.equals("6")) {
+			} else if (key.equals("7")) {
 				System.out.println("Has salido de la aplicación");
 			} else {
 				System.out.println(
